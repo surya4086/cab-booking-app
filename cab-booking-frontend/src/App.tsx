@@ -191,7 +191,7 @@ function AuthenticatedDriverDashboard() {
           throw new Error("Please log in as a driver.");
         }
 
-        const response = await fetch("http://localhost:8080/api/drivers/me", {
+        const response = await fetch(`${API_BASE}/drivers/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
             Accept: "application/json",
