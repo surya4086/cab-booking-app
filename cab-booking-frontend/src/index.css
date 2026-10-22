@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+/*
+  Indian palette.
+  Instead of editing every class in App.tsx / DriverDashboard.tsx, we re-point the
+  Tailwind colours the app already uses:
+    cyan-*    -> saffron  (primary actions, highlights)
+    emerald-* -> India green (success, pickup, "paid", "complete")
+    slate-*   -> deep chakra navy (backgrounds / surfaces)
+*/
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  /* Saffron */
+  --color-cyan-200: #ffd9a8;
+  --color-cyan-300: #ffc078;
+  --color-cyan-400: #ff9933;
+  --color-cyan-500: #f27d0c;
+  --color-cyan-600: #d96a00;
+
+  /* India green */
+  --color-emerald-300: #8be29a;
+  --color-emerald-400: #2db84d;
+  --color-emerald-500: #138808;
+  --color-emerald-600: #0f6e06;
+
+  /* Chakra navy surfaces */
+  --color-slate-950: #0a0f1e;
+  --color-slate-900: #111a2e;
+  --color-slate-800: #1a2540;
+  --color-slate-700: #2a3756;
+  --color-slate-600: #3d4b6e;
+  --color-slate-500: #5f6e91;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #0a0f1e;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Thin tricolour strip used at the top of the rider screen */
+.tricolor-bar {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #ff9933 0 33.33%,
+    #ffffff 33.33% 66.66%,
+    #138808 66.66% 100%
+  );
+}
+
+/* ---------- Leaflet ---------- */
+.leaflet-container {
+  font-family: inherit;
+  background: #111a2e;
+}
+
+.pin {
+  width: 22px;
+  height: 22px;
+  border: 4px solid #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+}
+.pin-pickup {
+  border-radius: 9999px;
+  background: #138808;
+}
+.pin-drop {
+  border-radius: 5px;
+  background: #ff9933;
+}
+
+.leaflet-control-zoom a {
+  background: #111a2e;
+  color: #fff;
+  border-color: #2a3756;
+}
+.leaflet-control-zoom a:hover {
+  background: #1a2540;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #111a2e;
+  color: #fff;
+}
+
+.pin-car {
+  display: flex;
+  height: 36px;
+  width: 36px;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #ff9933;
+  border-radius: 9999px;
+  background: #fff;
+  font-size: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+}
+
+/* Dark look for the standard OpenStreetMap tiles (tiles only, not pins or route) */
+.map-tiles-dark {
+  filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9) saturate(0.7);
+}
+
+/* ---------- Motion ---------- */
+/* Bottom sheet slides up once when the rider screen opens */
+@keyframes sheet-up {
+  from {
+    transform: translateY(32px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.sheet-enter {
+  animation: sheet-up 0.35s ease-out;
+}
+
+/* "Finding your driver" radar pulse */
+@keyframes ring {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+.pulse-ring {
+  position: relative;
+}
+.pulse-ring::before,
+.pulse-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: #ff9933;
+  animation: ring 1.8s ease-out infinite;
+}
+.pulse-ring::after {
+  animation-delay: 0.9s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet-enter,
+  .pulse-ring::before,
+  .pulse-ring::after {
+    animation: none;
+  }
+}

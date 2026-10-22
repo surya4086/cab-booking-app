@@ -1,0 +1,172 @@
+:root {
+  /* Theme Colors */
+  --saffron-primary: #FF9933;
+  --saffron-hover: #E68A00;
+  --saffron-light: #FFF4E5;
+  
+  --green-primary: #138808;
+  --green-hover: #0F6B06;
+  --green-light: #E8F5E9;
+
+  --bg-main: #F4F6F8;
+  --bg-surface: #FFFFFF;
+  
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --border-color: #E2E8F0;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --radius-lg: 16px;
+  --radius-md: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout Containers */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column-reverse;
+  }
+}
+
+/* Sidebar / Booking Panel */
+.booking-sidebar {
+  width: 420px;
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-lg);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* Header Banner Accent */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--saffron-light);
+  margin-bottom: 20px;
+}
+
+.brand-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.brand-title span.saffron {
+  color: var(--saffron-primary);
+}
+
+.brand-title span.green {
+  color: var(--green-primary);
+}
+
+/* Input Fields */
+.location-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.input-box:focus-within {
+  border-color: var(--saffron-primary);
+  box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.2);
+}
+
+.dot-saffron {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--saffron-primary);
+}
+
+.dot-green {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background-color: var(--green-primary);
+}
+
+.input-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Primary Action Buttons */
+.btn-primary {
+  background-color: var(--saffron-primary);
+  color: #FFFFFF;
+  border: none;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background-color: var(--saffron-hover);
+}
+
+.btn-success {
+  background-color: var(--green-primary);
+  color: #FFFFFF;
+  border: none;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.btn-success:hover {
+  background-color: var(--green-hover);
+}
+
+/* Map Container */
+.map-container {
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
