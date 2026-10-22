@@ -4,7 +4,7 @@ import DriverDashboard from "./DriverDashboard";
 import RideMap from "./RideMap";
 import LoginBackdrop from "./LoginBackdrop";
 
-const API_BASE = "http://localhost:8080/api";
+const API_BASE = "https://cab-booking-app-4rla.onrender.com/api";
 
 type Ride = {
   id: number;
