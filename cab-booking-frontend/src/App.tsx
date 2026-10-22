@@ -774,8 +774,9 @@ function App() {
     try {
       // 1. Create or retrieve the pending mock payment.
       const payment = await apiRequest<Payment>(
-        `/payments/rides/${ride.id}/status`
-      );
+      `/payments/rides/${ride.id}/initiate`,
+      { method: "POST" }
+    );
 
       let finalPayment = payment;
 
