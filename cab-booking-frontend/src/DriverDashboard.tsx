@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import RideMap from "./RideMap";
 
-const API_BASE = "http://localhost:8080/api";
+const API_BASE = "https://cab-booking-app-4rla.onrender.com/api";
 
 type Ride = {
   id: number;
